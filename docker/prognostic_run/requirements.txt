@@ -9,7 +9,6 @@ cftime
 chardet
 click
 cycler
-Cython
 dask
 decorator
 docrep
@@ -22,13 +21,6 @@ future
 gcsfs
 gitdb
 GitPython
-google-api-core
-google-auth
-google-auth-oauthlib
-google-cloud-core
-google-cloud-storage
-google-resumable-media
-googleapis-common-protos
 h5netcdf
 h5py
 idna
@@ -99,3 +91,7 @@ xarray
 xgcm
 zarr
 zipp
+
+# this version needs to match the one installed in the upstream image
+# to avoid an error when pip uninstalls cython
+Cython==0.29.10

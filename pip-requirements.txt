@@ -1,9 +1,12 @@
 apache-beam[gcp]
 zarr
 poetry
-gsutil
 nc-time-axis
 bump2version
 yq
 pytest-regtest
 conda-lock
+pip-tools
+
+# This version of gcsfs breaks logging
+gcsfs!=0.7.0

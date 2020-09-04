@@ -188,7 +188,15 @@ class TimeLoop(Iterable[Tuple[datetime, Diagnostics]]):
 
     def _step_physics(self) -> Diagnostics:
         self._log_debug(f"Physics Step")
+        temp_before = self._state[TEMP]
+        sphum_before = self._state[SPHUM]
+
         self._fv3gfs.step_physics()
+
+        # ignore the state updates for temperature and humidity
+        self._state[TEMP] = temp_before
+        self._state[SPHUM] = sphum_before
+
         # no diagnostics are computed by default
         return {}
 
@@ -212,9 +220,9 @@ class TimeLoop(Iterable[Tuple[datetime, Diagnostics]]):
         if self._do_only_diagnostic_ml:
             rename_diagnostics(diagnostics)
 
-        updated_state[TOTAL_PRECIP] = precipitation_sum(
-            state[TOTAL_PRECIP], diagnostics["net_moistening"], self._timestep
-        )
+        # updated_state[TOTAL_PRECIP] = precipitation_sum(
+        #     state[TOTAL_PRECIP], diagnostics["net_moistening"], self._timestep
+        # )
 
         self._log_debug("Setting Fortran State")
         self._state.update(updated_state)

@@ -22,12 +22,21 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "c0:ce:b5:cb:ea:78:dc:be:ce:b0:b4:02:9e:28:db:39"
-      - run: apt-get update && apt-get install -y uuid
+      - run: apt-get update && apt-get install -y uuid gnupg
       - run:
-          name: "Save GCS for tests."
+          name: "Setup google-cloud-sdk"
           command: |
+            # Install Google Cloud sdk
+            echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list &&\
+            curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+            apt-get update && apt-get install -y google-cloud-sdk
+            gcloud config set project vcm-ml
+
+            # Setup credentials
             echo $ENCODED_GOOGLE_CREDENTIALS | \
             base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
+
+
       - run: make update_submodules
       - run:
           name: "Concatenate package dependency files"

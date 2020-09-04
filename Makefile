@@ -115,6 +115,7 @@ install_deps:
 
 lock_deps:
 	conda-lock -f environment.yml
+	pip-compile pip-requirements.txt external/vcm/setup.py docker/**/requirements.txt --output-file constraints.txt
 
 install_local_packages:
 	bash $(ENVIRONMENT_SCRIPTS)/install_local_packages.sh $(PROJECT_NAME)
@@ -148,7 +149,6 @@ typecheck:
 	./check_types.sh
 
 lint: check_file_size
-	./tests/check_no_versions_in_requirements.sh
 	black --diff --check $(PYTHON_FILES) $(PYTHON_INIT_FILES)
 	flake8 $(PYTHON_FILES)
 	# ignore unused import error in __init__.py files
