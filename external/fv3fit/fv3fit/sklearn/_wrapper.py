@@ -6,12 +6,14 @@ import xarray as xr
 import pandas as pd
 import fsspec
 import joblib
+from .. import _shared
 from .._shared import pack, unpack, Predictor
 from .._shared import scaler
 import sklearn.base
 
 from typing import Optional, Iterable, Sequence
 import yaml
+from dataclasses import dataclass
 
 
 def _multiindex_to_tuple(index: pd.MultiIndex) -> tuple:
@@ -119,6 +121,63 @@ class BaseXarrayEstimator(Predictor):
 
         """
         raise NotImplementedError
+
+
+@dataclass
+class TriggeredRegressor(Predictor):
+    classifier: sklearn.base.BaseEstimator
+    regressor: sklearn.base.BaseEstimator
+    sample_dim_name: str
+    regressor_input_variables: Iterable[str]
+    classifier_input_variables: Iterable[str]
+    output_variables: Iterable[str]
+
+    @property
+    def regressor_x_packer(self) -> _shared.ArrayPacker:
+        return _shared.ArrayPacker(self.sample_dim_name, self.regressor_input_variables)
+
+    @property
+    def classifier_x_packer(self) -> _shared.ArrayPacker:
+        return _shared.ArrayPacker(
+            self.sample_dim_name, self.classifier_input_variables
+        )
+
+    @property
+    def input_variables(self):
+        return list(self.regressor_input_variables) + list(
+            self.classifier_input_variables
+        )
+
+    def predict(self, data):
+        X_reg = self.regressor_x_packer.to_array(data)
+        X_cl = self.classifier_x_packer.to_array(data)
+
+        with joblib.parallel_backend("threading", n_jobs=1):
+            labels = self.classifier.predict(X_cl).ravel().astype(bool)
+            output = self.regressor.predict(X_reg) * labels.reshape((-1, 1))
+
+        tendencies = np.split(output, len(self.output_variables), axis=1)
+        data_vars = {
+            key: ([self.sample_dim_name, "z"], tend)
+            for key, tend in zip(self.output_variables, tendencies)
+        }
+        return xr.Dataset(data_vars, coords=data.coords)
+
+    @staticmethod
+    def load(path):
+        import io
+
+        fs = fsspec.get_mapper(path)
+        reg = joblib.load(io.BytesIO(fs["regressor.pkl"]))
+        clas = joblib.load(io.BytesIO(fs["nn.pkl"]))
+        return TriggeredRegressor(
+            clas["model"],
+            reg["model"],
+            sample_dim_name="sample",
+            regressor_input_variables=reg["input_variables"],
+            classifier_input_variables=clas["input_variables"],
+            output_variables=reg["output_variables"],
+        )
 
 
 class SklearnWrapper(BaseXarrayEstimator):

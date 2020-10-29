@@ -2,7 +2,7 @@ from typing import Dict
 import yaml
 import f90nml
 from fv3fit.keras import get_model_class
-from fv3fit.sklearn import SklearnWrapper
+from fv3fit.sklearn import SklearnWrapper, TriggeredRegressor
 from fv3fit._shared import Predictor
 
 FV3CONFIG_FILENAME = "fv3config.yml"
@@ -32,6 +32,8 @@ def _get_ml_model_class(config):
         model_class = get_model_class(keras_model_type)
     elif model_type == "scikit_learn":
         model_class = SklearnWrapper
+    elif model_type == "triggered_sklearn":
+        return TriggeredRegressor
     else:
         raise ValueError(
             "Valid model type values include 'scikit_learn' and "

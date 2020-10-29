@@ -14,10 +14,10 @@ DATA = data/interim/advection/2019-07-17-FV3_DYAMOND_0.25deg_15minute_regrid_1de
 IMAGE = fv3net
 GCR_IMAGE = us.gcr.io/vcm-ml/fv3net
 
-GCR_BASE  = us.gcr.io/vcm-ml
-FV3NET_IMAGE = $(GCR_BASE)/fv3net
-PROGNOSTIC_RUN_IMAGE = $(GCR_BASE)/prognostic_run
-CACHE_TAG =latest
+REGISTRY  = us.gcr.io/vcm-ml
+FV3NET_IMAGE = $(REGISTRY)/fv3net
+PROGNOSTIC_RUN_IMAGE = $(REGISTRY)/prognostic_run
+CACHE_TAG =1bea47d2563d71f7ca54d46e71e176f2f44e7701
 
 IMAGES = fv3net fv3fit post_process_run prognostic_run
 
@@ -51,11 +51,11 @@ build_images: $(addprefix build_image_, $(IMAGES))
 push_images: $(addprefix push_image_, $(IMAGES))
 
 push_image_%: build_image_%
-	docker tag $* $(GCR_BASE)/$*:$(VERSION)
-	docker push $(GCR_BASE)/$*:$(VERSION)
+	docker tag $* $(REGISTRY)/$*:$(VERSION)
+	docker push $(REGISTRY)/$*:$(VERSION)
 
 pull_image_%:
-	docker pull $(GCR_BASE)/$*:$(VERSION)
+	docker pull $(REGISTRY)/$*:$(VERSION)
 
 enter: build_image
 	docker run -it -v $(shell pwd):/code \

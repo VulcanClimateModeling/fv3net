@@ -1,10 +1,16 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression
+import sklearn.dummy
 import unittest.mock
 import pytest
 import xarray as xr
 
-from fv3fit.sklearn._wrapper import RegressorEnsemble, pack, SklearnWrapper
+from fv3fit.sklearn._wrapper import (
+    RegressorEnsemble,
+    pack,
+    SklearnWrapper,
+    TriggeredRegressor,
+)
 from fv3fit._shared.scaler import ManualScaler
 
 
@@ -185,3 +191,33 @@ def test_SklearnWrapper_serialize_fit_after_load(tmpdir):
     loaded.fit(data)
 
     assert len(loaded.model.regressors) == 2
+
+
+def test_TriggeredRegressor_predict():
+    classifier = sklearn.dummy.DummyClassifier()
+    regressor = sklearn.dummy.DummyRegressor()
+
+    n = 10
+
+    X = np.zeros((1, n))
+    y = np.zeros((1, 2 * n))
+    label = np.zeros((1, 1))
+
+    classifier.fit(X, label)
+    regressor.fit(X, y)
+
+    ds = xr.Dataset({"a": (["sample", "z"], X), "b": (["sample", "z"], y[:, :n])})
+
+    model = TriggeredRegressor(
+        classifier,
+        regressor,
+        sample_dim_name="sample",
+        regressor_input_variables=["a"],
+        classifier_input_variables=["a"],
+        output_variables=["a", "b"],
+    )
+
+    out = model.predict(ds)
+    assert isinstance(out, xr.Dataset)
+    assert out["a"].shape[1] == n
+    assert out["b"].shape[1] == n
