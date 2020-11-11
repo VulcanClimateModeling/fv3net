@@ -40,6 +40,10 @@ build_image_post_process_run:
 	tools/docker_build_cached.sh us.gcr.io/vcm-ml/post_process_run:$(CACHE_TAG) \
 		workflows/post_process_run -t $(REGISTRY)/post_process_run:$(VERSION)
 
+build_image_dev_prognostic_run:
+	tools/docker_build_cached.sh us.gcr.io/vcm-ml/prognostic_run:$(CACHE_TAG) \
+		-f docker/prognostic_run/Dockerfile --target bld -t dev .
+
 enter_%:
 	docker run -ti -w /fv3net -v $(shell pwd):/fv3net $* bash
 
