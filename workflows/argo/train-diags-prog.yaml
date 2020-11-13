@@ -111,14 +111,3 @@ spec:
                 value: "{{inputs.parameters.public-report-output}}"
               - name: data-path
                 value: "{{inputs.parameters.train-test-data}}"
-      - name: online-diags
-        dependencies: [prognostic-run]
-        templateRef:
-          name: prognostic-run-diags
-          template: diagnostics
-        arguments:
-          parameters:
-              - name: run
-                value: "{{inputs.parameters.root}}/prognostic_run"
-              - name: output
-                value: "{{inputs.parameters.root}}/prognostic_run_diags"
