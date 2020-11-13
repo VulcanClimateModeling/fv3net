@@ -45,6 +45,8 @@ spec:
               - {name: reference-restarts, value: "{{inputs.parameters.reference-restarts}}"}
               - {name: flags, value: "{{inputs.parameters.flags}}"}
       - - name: run-model
+          continueOn:
+            failed: true
           templateRef:
             name: run-fv3gfs
             template: run-fv3gfs
@@ -59,6 +61,16 @@ spec:
               - {name: cpu, value: "{{inputs.parameters.cpu}}"}
               - {name: memory, value: "{{inputs.parameters.memory}}"}
               - {name: work-volume-name, value: "{{inputs.parameters.work-volume-name}}"}
+      - - name: diagnostics
+          templateRef: 
+            name: prognostic-run-diags
+            template: diagnostics
+          arguments:
+            parameters:
+            - name: run
+              value: "{{inputs.parameters.output}}"
+            - name: output
+              value: "{{inputs.parameters.output}}/diagnostics"
     - name: prepare-config
       inputs:
         parameters:
