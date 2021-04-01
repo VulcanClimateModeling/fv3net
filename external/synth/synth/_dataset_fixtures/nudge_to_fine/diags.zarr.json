@@ -1,0 +1,158 @@
+{
+    "version": "v3",
+    "schema": {
+        "coords": {
+            "time": {
+                "name": "time",
+                "dims": [
+                    "time"
+                ],
+                "value": [
+                    0,
+                    15
+                ],
+                "attrs": {
+                    "calendar": "julian",
+                    "units": "minutes since 2016-08-01 00:30:00.000000"
+                }
+            }
+        },
+        "variables": {
+            "net_heating_due_to_nudging": {
+                "name": "net_heating_due_to_nudging",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "W/m^2"
+                }
+            },
+            "net_mass_tendency_due_to_nudging": {
+                "name": "net_mass_tendency_due_to_nudging",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "kg/m^2/s"
+                }
+            },
+            "net_moistening_due_to_nudging": {
+                "name": "net_moistening_due_to_nudging",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "kg/m^2/s"
+                }
+            },
+            "physics_precip": {
+                "name": "physics_precip",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "kg/m^2/s"
+                }
+            },
+            "water_vapor_path": {
+                "name": "water_vapor_path",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "mm"
+                }
+            }
+        }
+    }
+}

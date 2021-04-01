@@ -1,1 +1,345 @@
-{"version": "v3", "schema": {"coords": {"step": {"name": "step", "dims": [], "value": "middle", "attrs": {}}, "time": {"name": "time", "dims": [], "value": 0, "attrs": {"units": "days since 2016-08-01 00:22:30.000000", "calendar": "julian"}}, "tile": {"name": "tile", "dims": ["tile"], "value": [0, 1, 2, 3, 4, 5], "attrs": {}}}, "variables": {"T": {"name": "T", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "T_storage": {"name": "T_storage", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "T_vulcan_omega_coarse": {"name": "T_vulcan_omega_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "delp": {"name": "delp", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "eddy_flux_vulcan_omega_sphum": {"name": "eddy_flux_vulcan_omega_sphum", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "eddy_flux_vulcan_omega_temp": {"name": "eddy_flux_vulcan_omega_temp", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "qv_dt_fv_sat_adj_coarse": {"name": "qv_dt_fv_sat_adj_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "qv_dt_phys_coarse": {"name": "qv_dt_phys_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "sphum": {"name": "sphum", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "sphum_storage": {"name": "sphum_storage", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "sphum_vulcan_omega_coarse": {"name": "sphum_vulcan_omega_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "t_dt_fv_sat_adj_coarse": {"name": "t_dt_fv_sat_adj_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "t_dt_nudge_coarse": {"name": "t_dt_nudge_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "t_dt_phys_coarse": {"name": "t_dt_phys_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}, "vulcan_omega_coarse": {"name": "vulcan_omega_coarse", "dims": ["tile", "pfull", "grid_yt", "grid_xt"], "array": {"shape": [6, 19, 8, 8], "dtype": "<f4", "chunks": [6, 19, 8, 8]}, "attrs": {}}}}}
+{
+  "version": "v3",
+  "schema": {
+    "coords": {
+      "step": {
+        "name": "step",
+        "dims": [],
+        "value": "middle",
+        "attrs": {}
+      }
+    },
+    "variables": {
+      "T": {
+        "name": "T",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "T_storage": {
+        "name": "T_storage",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "T_vulcan_omega_coarse": {
+        "name": "T_vulcan_omega_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "delp": {
+        "name": "delp",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "eddy_flux_vulcan_omega_sphum": {
+        "name": "eddy_flux_vulcan_omega_sphum",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "eddy_flux_vulcan_omega_temp": {
+        "name": "eddy_flux_vulcan_omega_temp",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "qv_dt_fv_sat_adj_coarse": {
+        "name": "qv_dt_fv_sat_adj_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "qv_dt_phys_coarse": {
+        "name": "qv_dt_phys_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "sphum": {
+        "name": "sphum",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "sphum_storage": {
+        "name": "sphum_storage",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "sphum_vulcan_omega_coarse": {
+        "name": "sphum_vulcan_omega_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "t_dt_fv_sat_adj_coarse": {
+        "name": "t_dt_fv_sat_adj_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "t_dt_nudge_coarse": {
+        "name": "t_dt_nudge_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "t_dt_phys_coarse": {
+        "name": "t_dt_phys_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      },
+      "vulcan_omega_coarse": {
+        "name": "vulcan_omega_coarse",
+        "dims": [
+          "pfull",
+          "grid_yt",
+          "grid_xt"
+        ],
+        "array": {
+          "shape": [
+            19,
+            8,
+            8
+          ],
+          "dtype": "<f4",
+          "chunks": [
+            19,
+            8,
+            8
+          ]
+        },
+        "attrs": {}
+      }
+    }
+  }
+}

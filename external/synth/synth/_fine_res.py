@@ -1,11 +1,11 @@
 import os
 from typing import Sequence
 
-from synth.core import generate
-from synth.schemas import load_schema
+from synth.core import write_directory_schema
+from synth.schemas import load_schema_directory
 
 
-def generate_fine_res(datadir: str, times: Sequence[str]):
+def generate_fine_res(datadir: str):
     """Generate a directory of fine-res data
     
     Args:
@@ -13,10 +13,5 @@ def generate_fine_res(datadir: str, times: Sequence[str]):
         times: list of YYYYMMDD.HHMMSS timestamps
     
     """
-    schema = load_schema("fine_res_budget.json")
-    dataset = generate(schema)
-
-    for tile in range(1, 7):
-        for time in times:
-            path = os.path.join(datadir, f"{time}.tile{tile}.nc")
-            dataset.isel(tile=tile - 1).to_netcdf(path, engine="h5netcdf")
+    schema = load_schema_directory("fine_res_budget")
+    write_directory_schema(datadir, schema)

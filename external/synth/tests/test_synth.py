@@ -6,11 +6,13 @@ import zarr
 import pytest
 import xarray as xr
 
-from synth.core import _Encoder
+from synth.core import _Encoder, load_directory_schema
 
 from synth import (
     generate,
     read_schema_from_zarr,
+    read_directory_schema,
+    dump_directory_schema_to_disk,
     Array,
     ChunkedArray,
     CoordinateSchema,
@@ -19,6 +21,7 @@ from synth import (
     VariableSchema,
     __version__,
     dumps,
+    load,
 )
 
 from synth.core import dict_to_schema
@@ -273,3 +276,25 @@ def test_generate_coord():
     s = CoordinateSchema(name="zaxis_1", dims=["zaxis_1"], value=[1.0],)
     expected = xr.DataArray(name="zaxis_1", dims=["zaxis_1"], data=[1.0])
     xr.testing.assert_equal(generate(s), expected)
+
+
+def test_directory_schema_integrations(tmpdir):
+    ds = xr.DataArray(name="zaxis_1", dims=["zaxis_1"], data=[1.0]).to_dataset(name="a")
+    ds.to_zarr(str(tmpdir.join("a.zarr")))
+
+    schema = read_directory_schema(str(tmpdir))
+    assert "a.zarr" in schema
+
+    schema_dir = tmpdir.join("schema")
+    dump_directory_schema_to_disk(schema, str(schema_dir))
+
+    # now try loading the schema
+    loaded = load_directory_schema(str(schema_dir))
+    assert loaded == schema
+
+
+def test_dump_directory_schema(tmpdir):
+    dump_directory_schema_to_disk({"a.zarr": dataset1}, str(tmpdir))
+    # test that we can load schema from within the saved directory
+    with open(str(tmpdir.join("a.zarr.json"))) as f:
+        load(f)

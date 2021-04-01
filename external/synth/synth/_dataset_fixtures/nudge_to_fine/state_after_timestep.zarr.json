@@ -1,0 +1,485 @@
+{
+    "version": "v3",
+    "schema": {
+        "coords": {
+            "time": {
+                "name": "time",
+                "dims": [
+                    "time"
+                ],
+                "value": [
+                    0,
+                    15
+                ],
+                "attrs": {
+                    "calendar": "julian",
+                    "units": "minutes since 2016-08-01 00:30:00.000000"
+                }
+            }
+        },
+        "variables": {
+            "air_temperature": {
+                "name": "air_temperature",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "degK"
+                }
+            },
+            "eastward_wind": {
+                "name": "eastward_wind",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "m/s"
+                }
+            },
+            "land_sea_mask": {
+                "name": "land_sea_mask",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": ""
+                }
+            },
+            "latent_heat_flux": {
+                "name": "latent_heat_flux",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "W/m**2"
+                }
+            },
+            "northward_wind": {
+                "name": "northward_wind",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "m/s"
+                }
+            },
+            "pressure_thickness_of_atmospheric_layer": {
+                "name": "pressure_thickness_of_atmospheric_layer",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "Pa"
+                }
+            },
+            "sensible_heat_flux": {
+                "name": "sensible_heat_flux",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "W/m^2"
+                }
+            },
+            "specific_humidity": {
+                "name": "specific_humidity",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "kg/kg"
+                }
+            },
+            "surface_geopotential": {
+                "name": "surface_geopotential",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "m^2 s^-2"
+                }
+            },
+            "surface_precipitation_rate": {
+                "name": "surface_precipitation_rate",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "mm/s"
+                }
+            },
+            "surface_temperature": {
+                "name": "surface_temperature",
+                "dims": [
+                    "time",
+                    "tile",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "degK"
+                }
+            },
+            "total_soil_moisture": {
+                "name": "total_soil_moisture",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z_soil",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "unknown"
+                }
+            },
+            "vertical_thickness_of_atmospheric_layer": {
+                "name": "vertical_thickness_of_atmospheric_layer",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "m"
+                }
+            },
+            "vertical_wind": {
+                "name": "vertical_wind",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "m/s"
+                }
+            },
+            "x_wind": {
+                "name": "x_wind",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y_interface",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        9,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        9,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "m/s"
+                }
+            },
+            "y_wind": {
+                "name": "y_wind",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x_interface"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        9
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        9
+                    ]
+                },
+                "attrs": {
+                    "units": "m/s"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,584 @@
+{
+    "version": "v3",
+    "schema": {
+        "coords": {
+            "time": {
+                "name": "time",
+                "dims": [
+                    "time"
+                ],
+                "value": [
+                    0,
+                    15
+                ],
+                "attrs": {
+                    "calendar": "julian",
+                    "calendar_type": "JULIAN",
+                    "cartesian_axis": "T",
+                    "long_name": "time",
+                    "units": "minutes since 2016-08-01 00:30:00.000000"
+                }
+            }
+        },
+        "variables": {
+            "PRESsfc": {
+                "name": "PRESsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "surface pressure",
+                    "units": "Pa"
+                }
+            },
+            "PWAT": {
+                "name": "PWAT",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "Total water path",
+                    "units": "kg/m**2"
+                }
+            },
+            "RH850": {
+                "name": "RH850",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "850-mb relative humidity",
+                    "units": "%"
+                }
+            },
+            "TMP200": {
+                "name": "TMP200",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "200-mb temperature",
+                    "units": "K"
+                }
+            },
+            "TMP500": {
+                "name": "TMP500",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "500-mb temperature",
+                    "units": "K"
+                }
+            },
+            "TMP850": {
+                "name": "TMP850",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "850-mb temperature",
+                    "units": "K"
+                }
+            },
+            "TMPlowest": {
+                "name": "TMPlowest",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "lowest layer temperature",
+                    "units": "K"
+                }
+            },
+            "VIL": {
+                "name": "VIL",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "Liquid water path",
+                    "units": "kg/m**2"
+                }
+            },
+            "VORT500": {
+                "name": "VORT500",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "500-mb vorticity",
+                    "units": "1/s"
+                }
+            },
+            "area": {
+                "name": "area",
+                "dims": [
+                    "tile",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "cell area",
+                    "units": "m**2"
+                }
+            },
+            "grid_x": {
+                "name": "grid_x",
+                "dims": [
+                    "grid_x"
+                ],
+                "array": {
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "X",
+                    "long_name": "cell corner longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "grid_xt": {
+                "name": "grid_xt",
+                "dims": [
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "X",
+                    "long_name": "T-cell longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "grid_y": {
+                "name": "grid_y",
+                "dims": [
+                    "grid_y"
+                ],
+                "array": {
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "Y",
+                    "long_name": "cell corner latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "grid_yt": {
+                "name": "grid_yt",
+                "dims": [
+                    "grid_yt"
+                ],
+                "array": {
+                    "shape": [
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "Y",
+                    "long_name": "T-cell latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "h500": {
+                "name": "h500",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "500-mb height",
+                    "units": "m"
+                }
+            },
+            "lat": {
+                "name": "lat",
+                "dims": [
+                    "tile",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "latb": {
+                "name": "latb",
+                "dims": [
+                    "tile",
+                    "grid_y",
+                    "grid_x"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        9,
+                        9
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        9,
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "lon": {
+                "name": "lon",
+                "dims": [
+                    "tile",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "lonb": {
+                "name": "lonb",
+                "dims": [
+                    "tile",
+                    "grid_y",
+                    "grid_x"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        9,
+                        9
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        9,
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "q500": {
+                "name": "q500",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "500-mb specific humidity",
+                    "units": "kg/kg"
+                }
+            },
+            "w500": {
+                "name": "w500",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "500-mb w-wind",
+                    "units": "m/s"
+                }
+            }
+        }
+    }
+}

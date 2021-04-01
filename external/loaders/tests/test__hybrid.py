@@ -31,16 +31,20 @@ def nudging_url(tmpdir):
 @pytest.fixture
 def fine_url(tmpdir):
     fine_url = str(tmpdir.mkdir("fine_res"))
-    synth.generate_fine_res(fine_url, times_centered_str)
-    return fine_url
+    synth.generate_fine_res(fine_url)
+    return fine_url, "20160801.003000"
 
 
 def test_open_fine_resolution_nudging_hybrid(nudging_url, fine_url):
     # test opener
+    fine_url, time_center = fine_url
+    
     data = open_fine_resolution_nudging_hybrid(
-        None, {"url": nudging_url}, {"fine_res_url": fine_url}
+        None,
+        dict(url=nudging_url, nudging_variables=["air_temperature"]),
+        {"fine_res_url": fine_url},
     )
-    data[timestep1_end]
+    data[time_center]
 
 
 @pytest.mark.parametrize(

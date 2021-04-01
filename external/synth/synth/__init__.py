@@ -25,6 +25,9 @@ from .core import (
     loads,
     read_schema_from_dataset,
     read_schema_from_zarr,
+    read_directory_schema,
+    load_directory_schema,
+    dump_directory_schema_to_disk,
 )
 
 __version__ = "0.1.0"

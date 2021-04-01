@@ -1,0 +1,613 @@
+{
+    "version": "v3",
+    "schema": {
+        "coords": {
+            "time": {
+                "name": "time",
+                "dims": [
+                    "time"
+                ],
+                "value": [
+                    0,
+                    15
+                ],
+                "attrs": {
+                    "calendar": "julian",
+                    "calendar_type": "JULIAN",
+                    "cartesian_axis": "T",
+                    "long_name": "time",
+                    "units": "minutes since 2016-08-01 00:30:00.000000"
+                }
+            }
+        },
+        "variables": {
+            "CPRATsfc": {
+                "name": "CPRATsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "averaged bucket surface convective precipitation rate",
+                    "units": "kg/m**2/s"
+                }
+            },
+            "DLWRFsfc": {
+                "name": "DLWRFsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "surface downward longwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "DSWRFsfc": {
+                "name": "DSWRFsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "averaged surface downward shortwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "DSWRFtoa": {
+                "name": "DSWRFtoa",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "top of atmos downward shortwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "LHTFLsfc": {
+                "name": "LHTFLsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "surface latent heat flux",
+                    "units": "w/m**2"
+                }
+            },
+            "PRATEsfc": {
+                "name": "PRATEsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "bucket surface precipitation rate",
+                    "units": "kg/m**2/s"
+                }
+            },
+            "SHTFLsfc": {
+                "name": "SHTFLsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "surface sensible heat flux",
+                    "units": "w/m**2"
+                }
+            },
+            "ULWRFsfc": {
+                "name": "ULWRFsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "surface upward longwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "ULWRFtoa": {
+                "name": "ULWRFtoa",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "top of atmos upward longwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "USWRFsfc": {
+                "name": "USWRFsfc",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "averaged surface upward shortwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "USWRFtoa": {
+                "name": "USWRFtoa",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "top of atmos upward shortwave flux",
+                    "units": "W/m**2"
+                }
+            },
+            "area": {
+                "name": "area",
+                "dims": [
+                    "tile",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "cell area",
+                    "units": "m**2"
+                }
+            },
+            "grid_x": {
+                "name": "grid_x",
+                "dims": [
+                    "grid_x"
+                ],
+                "array": {
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "X",
+                    "long_name": "cell corner longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "grid_xt": {
+                "name": "grid_xt",
+                "dims": [
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "X",
+                    "long_name": "T-cell longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "grid_y": {
+                "name": "grid_y",
+                "dims": [
+                    "grid_y"
+                ],
+                "array": {
+                    "shape": [
+                        9
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "Y",
+                    "long_name": "cell corner latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "grid_yt": {
+                "name": "grid_yt",
+                "dims": [
+                    "grid_yt"
+                ],
+                "array": {
+                    "shape": [
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cartesian_axis": "Y",
+                    "long_name": "T-cell latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "lat": {
+                "name": "lat",
+                "dims": [
+                    "tile",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "latb": {
+                "name": "latb",
+                "dims": [
+                    "tile",
+                    "grid_y",
+                    "grid_x"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        9,
+                        9
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        9,
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "latitude",
+                    "units": "degrees_N"
+                }
+            },
+            "lon": {
+                "name": "lon",
+                "dims": [
+                    "tile",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "lonb": {
+                "name": "lonb",
+                "dims": [
+                    "tile",
+                    "grid_y",
+                    "grid_x"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        9,
+                        9
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        9,
+                        9
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "longitude",
+                    "units": "degrees_E"
+                }
+            },
+            "uflx": {
+                "name": "uflx",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "instantaneous u component of surface stress",
+                    "units": "XXX"
+                }
+            },
+            "vflx": {
+                "name": "vflx",
+                "dims": [
+                    "tile",
+                    "time",
+                    "grid_yt",
+                    "grid_xt"
+                ],
+                "array": {
+                    "shape": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f2",
+                    "chunks": [
+                        6,
+                        2,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "cell_methods": "time: point",
+                    "long_name": "instantaneous v component of surface stress",
+                    "units": "XXX"
+                }
+            }
+        }
+    }
+}

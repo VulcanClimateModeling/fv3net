@@ -1,0 +1,143 @@
+{
+    "version": "v3",
+    "schema": {
+        "coords": {
+            "time": {
+                "name": "time",
+                "dims": [
+                    "time"
+                ],
+                "value": [
+                    0,
+                    15
+                ],
+                "attrs": {
+                    "calendar": "julian",
+                    "units": "minutes since 2016-08-01 00:30:00.000000"
+                }
+            }
+        },
+        "variables": {
+            "tendency_of_air_temperature_due_to_fv3_physics": {
+                "name": "tendency_of_air_temperature_due_to_fv3_physics",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "unknown"
+                }
+            },
+            "tendency_of_eastward_wind_due_to_fv3_physics": {
+                "name": "tendency_of_eastward_wind_due_to_fv3_physics",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "unknown"
+                }
+            },
+            "tendency_of_northward_wind_due_to_fv3_physics": {
+                "name": "tendency_of_northward_wind_due_to_fv3_physics",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "unknown"
+                }
+            },
+            "tendency_of_specific_humidity_due_to_fv3_physics": {
+                "name": "tendency_of_specific_humidity_due_to_fv3_physics",
+                "dims": [
+                    "time",
+                    "tile",
+                    "z",
+                    "y",
+                    "x"
+                ],
+                "array": {
+                    "shape": [
+                        2,
+                        6,
+                        19,
+                        8,
+                        8
+                    ],
+                    "dtype": "<f8",
+                    "chunks": [
+                        1,
+                        6,
+                        19,
+                        8,
+                        8
+                    ]
+                },
+                "attrs": {
+                    "units": "unknown"
+                }
+            }
+        }
+    }
+}
