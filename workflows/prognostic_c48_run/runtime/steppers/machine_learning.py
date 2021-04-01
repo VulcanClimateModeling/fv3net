@@ -10,6 +10,7 @@ import runtime
 import xarray as xr
 from runtime.names import DELP, SPHUM
 from runtime.types import Diagnostics, State
+from runtime.diagnostics.machine_learning import rename_diagnostics
 from vcm import thermo
 import vcm
 
@@ -166,9 +167,10 @@ class PureMLStepper:
 
     net_moistening = "net_moistening"
 
-    def __init__(self, model: MultiModelAdapter, timestep: float):
+    def __init__(self, model: MultiModelAdapter, timestep: float, diagnostic_ml: bool):
         self.model = model
         self.timestep = timestep
+        self.diagnostic_ml = diagnostic_ml
 
     def __call__(self, time, state):
 
@@ -201,6 +203,11 @@ class PureMLStepper:
         diagnostics["rank_updated_points"] = xr.where(dQ2_initial != dQ2_updated, 1, 0)
 
         state_updates = {}
+
+        if self.diagnostic_ml:
+            rename_diagnostics(diagnostics)
+            tendency = {}
+
         return (
             tendency,
             diagnostics,
@@ -224,6 +231,11 @@ class MLStateStepper(PureMLStepper):
             diagnostics[name] = state_updates[name]
 
         tendency = {}
+
+        if self.diagnostic_ml:
+            rename_diagnostics(diagnostics)
+            state_updates = {}
+
         return (
             tendency,
             diagnostics,

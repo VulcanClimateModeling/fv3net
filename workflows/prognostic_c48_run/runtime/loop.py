@@ -197,12 +197,6 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
         self._timestep = timestep
         self._log_info(f"Timestep: {timestep}")
 
-        self._prephysics_only_diagnostic_ml: bool = getattr(
-            getattr(config, "prephysics"), "diagnostic_ml", False
-        )
-        self._postphysics_only_diagnostic_ml: bool = getattr(
-            getattr(config, "scikit_learn"), "diagnostic_ml", False
-        )
         self._tendencies: Tendencies = {}
         self._state_updates: State = {}
 
@@ -231,7 +225,9 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
         elif isinstance(config.prephysics, MachineLearningConfig):
             self._log_info("Using MLStateStepper for prephysics")
             model = self._open_model(config.prephysics, "_prephysics")
-            stepper = MLStateStepper(model, self._timestep)
+            stepper = MLStateStepper(
+                model, self._timestep, config.prephysics.diagnostic_ml
+            )
         elif isinstance(config.prephysics, PrescriberConfig):
             self._log_info("Using Prescriber for prephysics")
             partitioner = fv3gfs.util.CubedSpherePartitioner.from_namelist(
@@ -248,7 +244,9 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
         if config.scikit_learn:
             self._log_info("Using MLStepper for postphysics updates")
             model = self._open_model(config.scikit_learn, "_postphysics")
-            stepper: Optional[Stepper] = PureMLStepper(model, self._timestep)
+            stepper: Optional[Stepper] = PureMLStepper(
+                model, self._timestep, config.scikit_learn.diagnostic_ml
+            )
         elif config.nudging:
             self._log_info("Using NudgingStepper for postphysics updates")
             partitioner = fv3gfs.util.CubedSpherePartitioner.from_namelist(
@@ -367,10 +365,7 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
             _, diagnostics, state_updates = self._prephysics_stepper(
                 self._state.time, self._state
             )
-            if self._prephysics_only_diagnostic_ml:
-                rename_diagnostics(diagnostics)
-            else:
-                self._state_updates.update(state_updates)
+            self._state_updates.update(state_updates)
         prephysics_overrides = [
             "override_for_time_adjusted_total_sky_downward_shortwave_flux_at_surface",
             "override_for_time_adjusted_total_sky_net_shortwave_flux_at_surface",
@@ -402,11 +397,8 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
             diagnostics = self._postphysics_stepper.get_momentum_diagnostics(
                 self._state, tendency
             )
-            if self._postphysics_only_diagnostic_ml:
-                rename_diagnostics(diagnostics)
-            else:
-                updated_state = add_tendency(self._state, tendency, dt=self._timestep)
-                self._state.update_mass_conserving(updated_state)
+            updated_state = add_tendency(self._state, tendency, dt=self._timestep)
+            self._state.update_mass_conserving(updated_state)
 
         return diagnostics
 
@@ -447,18 +439,15 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
             diagnostics = self._postphysics_stepper.get_diagnostics(
                 self._state, tendency
             )
-            if self._postphysics_only_diagnostic_ml:
-                rename_diagnostics(diagnostics)
-            else:
-                updated_state = add_tendency(self._state, tendency, dt=self._timestep)
-                updated_state[TOTAL_PRECIP] = precipitation_sum(
-                    self._state[TOTAL_PRECIP],
-                    diagnostics[self._postphysics_stepper.net_moistening],
-                    self._timestep,
-                )
-                diagnostics[TOTAL_PRECIP] = updated_state[TOTAL_PRECIP]
-                self._state.update_mass_conserving(updated_state)
-                self._state.update_mass_conserving(self._state_updates)
+            updated_state = add_tendency(self._state, tendency, dt=self._timestep)
+            updated_state[TOTAL_PRECIP] = precipitation_sum(
+                self._state[TOTAL_PRECIP],
+                diagnostics[self._postphysics_stepper.net_moistening],
+                self._timestep,
+            )
+            diagnostics[TOTAL_PRECIP] = updated_state[TOTAL_PRECIP]
+            self._state.update_mass_conserving(updated_state)
+            self._state.update_mass_conserving(self._state_updates)
 
         diagnostics.update({name: self._state[name] for name in self._states_to_output})
         diagnostics.update(
