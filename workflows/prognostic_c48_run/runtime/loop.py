@@ -442,7 +442,7 @@ class TimeLoop(Iterable[Tuple[cftime.DatetimeJulian, Diagnostics]], LoggingMixin
                 updated_state_from_tendency = add_tendency(
                     self._state, tendency, dt=self._timestep
                 )
-                updated_state_from_tendency[TOTAL_PRECIP] = precipitation_sum(
+                updated_state_from_tendency[TOTAL_PRECIP] = 0 * precipitation_sum(
                     self._state[TOTAL_PRECIP],
                     diagnostics[self._postphysics_stepper.net_moistening],
                     self._timestep,
