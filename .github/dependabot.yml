@@ -1,0 +1,23 @@
+version: 2
+registries:
+  docker-registry-us-gcr-io:
+    type: docker-registry
+    url: https://us.gcr.io
+    username: _json_key
+    password: "${{secrets.DOCKER_REGISTRY_US_GCR_IO_PASSWORD}}"
+
+updates:
+- package-ecosystem: docker
+  directory: "/docker/prognostic_run"
+  schedule:
+    interval: weekly
+    time: "13:00"
+  open-pull-requests-limit: 10
+  registries:
+  - docker-registry-us-gcr-io
+- package-ecosystem: gitsubmodule
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "13:00"
+  open-pull-requests-limit: 10
