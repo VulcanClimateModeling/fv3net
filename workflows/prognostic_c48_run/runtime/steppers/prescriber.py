@@ -151,7 +151,7 @@ def _get_prescribed_ds(
     ds = _open_ds(dataset_key, consolidated)
     ds = get_variables(ds, variables)
     if timesteps is not None:
-        ds = ds.interp(time=timesteps)
+        ds = ds.reindex(time=timesteps, method="bfill")
     time_coord = ds.coords["time"]
     return ds.drop_vars(names="time").load(), time_coord
 
