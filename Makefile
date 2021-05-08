@@ -157,6 +157,11 @@ lock_pip:
 	sed -i.bak  's/\[.*\]//g' constraints.txt
 	rm -f constraints.txt.bak
 
+
+lock_prog_run:
+	python lock-pip.py  reqs.txt > requirements_prog_run.txt
+
+
 ## Install External Dependencies
 install_deps:
 	bash $(ENVIRONMENT_SCRIPTS)/build_environment.sh $(PROJECT_NAME)

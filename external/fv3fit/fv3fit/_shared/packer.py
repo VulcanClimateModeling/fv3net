@@ -65,7 +65,7 @@ class ArrayPacker:
         """Initialize the ArrayPacker.
 
         Args:
-            sample_dim_name: dimension name to treat as the sample dimension
+            sample_dim_name: dimension name to treat as the sample dimension   dfdfdff
             pack_names: variable pack_names to pack
         """
         self._pack_names = list(pack_names)

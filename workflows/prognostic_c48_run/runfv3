@@ -142,7 +142,7 @@ function runSegment {
     (
         cd "$rundir"
         find . > preexisting_files.txt
-        mpirun -n "$NUM_PROC" python3 -m mpi4py "runfile.py" |& tee -a "logs.txt"
+        2>&1 mpirun -n "$NUM_PROC" python3 -m mpi4py "runfile.py" | tee -a "logs.txt"
     )
 }
 

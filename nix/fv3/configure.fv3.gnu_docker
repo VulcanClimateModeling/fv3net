@@ -1,0 +1,134 @@
+
+############
+# commands #
+############
+FC = mpif90
+CC = mpicc
+CXX = g++
+LD = mpif90
+
+NETCDF_DIR = /usr
+
+#########
+# flags #
+#########
+# default is 64-bit OpenMP non-hydrostatic build
+DEBUG = 
+REPRO = Y
+VERBOSE =
+OPENMP = Y
+AVX2 = Y
+HYDRO = N
+32BIT = N
+
+NEMSIOINC = -I$(NEMSIO_INC)
+
+NCEPLIBS_DIR ?= /opt/NCEPlibs/lib
+NCEPLIBS = -L$(NCEPLIBS_DIR) -lnemsio_d -lbacio_4 -lsp_v2.0.2_d -lw3emc_d -lw3nco_d
+
+##############################################
+# Need to use at least GNU Make version 3.81 #
+##############################################
+need := 3.81
+ok := $(filter $(need),$(firstword $(sort $(MAKE_VERSION) $(need))))
+ifneq ($(need),$(ok))
+$(error Need at least make version $(need).  Load module gmake/3.81)
+endif
+
+NETCDF_ROOT = $(NETCDF_DIR)
+INCLUDE = -I$(NETCDF_ROOT)/include
+
+FPPFLAGS := -cpp -Wp,-w $(INCLUDE) -fPIC
+CFLAGS := $(INCLUDE) -fPIC
+
+FFLAGS := $(INCLUDE) -fcray-pointer -ffree-line-length-none -fno-range-check -fPIC
+ 
+CPPDEFS += -Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO -Duse_LARGEFILE -DUSE_GFSL63 -DGFS_PHYS -DNO_INLINE_POST
+CPPDEFS += -DNEW_TAUCTMAX -DINTERNAL_FILE_NML
+
+ifeq ($(GT4PY_DEV),Y)
+CPPDEFS += -DGT4PY_DEV
+endif
+
+ifeq ($(HYDRO),Y)
+CPPDEFS += 
+else
+CPPDEFS += -DMOIST_CAPPA -DUSE_COND
+endif
+
+ifeq ($(32BIT),Y)
+CPPDEFS += -DOVERLOAD_R4 -DOVERLOAD_R8
+else
+FFLAGS += -fdefault-double-8 -fdefault-real-8
+endif
+
+ifeq ($(AVX2),Y)
+FFLAGS += -mavx
+CFLAGS += -mavx
+endif
+
+FFLAGS_OPT = -O2 
+FFLAGS_REPRO = -O2 -g -fbacktrace
+FFLAGS_DEBUG = -O0 -g -fbacktrace -fno-fast-math -ffree-line-length-none -fno-backslash -pedantic -Waliasing -Wampersand -Wline-truncation -Wsurprising -Wtabs -Wunderflow -fdump-core -ffpe-trap=invalid,zero,overflow -fbounds-check -finit-real=nan -finit-integer=9999999 -finit-logical=true -finit-character=35
+FFLAGS_GCOV = --coverage
+
+TRANSCENDENTALS := -fast-transcendentals
+FFLAGS_OPENMP = -fopenmp
+FFLAGS_VERBOSE = -v -V -what
+
+CFLAGS += -D__IFC 
+
+CFLAGS_OPT = -O2 
+CFLAGS_REPRO = -O2 
+CFLAGS_OPENMP = -fopenmp
+CFLAGS_DEBUG = -O0 -g 
+CFLAGS_GCOV = --coverage
+
+LDFLAGS := -L${ESMF_DIR}/lib -L${FMS_DIR}/libFMS/.libs/
+LDFLAGS_OPENMP := -fopenmp
+LDFLAGS_VERBOSE := -Wl,-V,--verbose,-cref,-M
+LDFLAGS_GCOV = --coverage
+
+# start with blank LIBS
+LIBS :=
+LIBS += -lgfortran
+
+ifneq ($(REPRO),)
+CFLAGS += $(CFLAGS_REPRO)
+FFLAGS += $(FFLAGS_REPRO)
+FAST :=
+else ifneq ($(DEBUG),)
+CFLAGS += $(CFLAGS_DEBUG)
+FFLAGS += $(FFLAGS_DEBUG)
+FAST :=
+else ifneq ($(TEST),)
+CFLAGS += $(CFLAGS_TEST)
+FFLAGS += $(FFLAGS_TEST)
+FAST :=
+else
+CFLAGS += $(CFLAGS_OPT)
+FFLAGS += $(FFLAGS_OPT)
+FAST := $(TRANSCENDENTALS)
+endif
+
+ifneq ($(GCOV),)
+CFLAGS += $(CFLAGS_GCOV)
+FFLAGS += $(FFLAGS_GCOV)
+LDFLAGS += $(LDFLAGS_GCOV)
+endif
+
+ifneq ($(OPENMP),)
+CFLAGS += $(CFLAGS_OPENMP)
+FFLAGS += $(FFLAGS_OPENMP)
+LDFLAGS += $(LDFLAGS_OPENMP)
+endif
+
+ifneq ($(VERBOSE),)
+CFLAGS += $(CFLAGS_VERBOSE)
+FFLAGS += $(FFLAGS_VERBOSE)
+LDFLAGS += $(LDFLAGS_VERBOSE)
+endif
+
+LIBS += -lFMS -L/usr/local/esmf/lib -lesmf -lnetcdff -lnetcdf -llapack -lblas -lc -lrt
+
+LDFLAGS += $(LIBS)
